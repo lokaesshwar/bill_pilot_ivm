@@ -12,6 +12,17 @@ The application organizes extracted information into **Invoices, Products, and C
 - **Backend (Render):** https://getswipe-assignment.onrender.com  
 
 ---
+## 📷 Sample Images
+
+## **Home**
+<img width="1916" height="859" alt="image" src="https://github.com/user-attachments/assets/53739eb0-ba61-49a9-a490-0f316c306bf3" />
+
+## **Workspace**
+<img width="1713" height="850" alt="image" src="https://github.com/user-attachments/assets/e5bcba7e-9f05-436c-bc85-1d87657bde29" />
+
+
+
+---
 
 ## ✨ Features
 
