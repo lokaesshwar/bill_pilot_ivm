@@ -31,14 +31,12 @@ const UploadSection = () => {
       return;
     }
 
-    // ✅ replace previous selection with new selection
-    setSelectedFiles(validFiles);
+    setSelectedFiles((prev) => [...prev, ...validFiles]);
+    e.target.value = "";
   };
 
   const removeFile = (index) => {
-    setSelectedFiles((prev) =>
-      prev.filter((_, i) => i !== index)
-    );
+    setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleUpload = async () => {
@@ -60,8 +58,6 @@ const UploadSection = () => {
 
       dispatch(setInvoices(response.data?.data?.invoices || []));
       toast.success("Invoices extracted successfully");
-
-      // ❌ DO NOT clear selectedFiles here
     } catch (error) {
       toast.error(
         error.response?.data?.error || "Failed to process files"
@@ -90,12 +86,12 @@ const UploadSection = () => {
             Upload Invoices
           </h3>
           <p className="text-sm text-gray-400 mt-1">
-            Upload documents to automatically extract invoice data
+            Add one or more invoice files, then click “Upload & Extract” to view the results below.
           </p>
         </div>
 
         <div className="flex flex-wrap gap-4 items-center">
-          <label className="relative">
+          <label>
             <input
               type="file"
               multiple
@@ -103,9 +99,7 @@ const UploadSection = () => {
               onChange={handleFileSelect}
               className="hidden"
             />
-            <span className="inline-flex items-center px-4 py-2 rounded-lg
-                             bg-teal-600 hover:bg-teal-500 text-black
-                             font-medium cursor-pointer transition">
+            <span className="inline-flex items-center px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-black font-medium cursor-pointer transition">
               Add Files
             </span>
           </label>
@@ -113,18 +107,17 @@ const UploadSection = () => {
           <button
             onClick={handleUpload}
             disabled={!selectedFiles.length || loading}
-            className="px-4 py-2 rounded-lg border border-teal-600
-                       text-teal-400 hover:bg-teal-600 hover:text-black
-                       disabled:opacity-40 disabled:cursor-not-allowed
-                       transition"
+            className="px-4 py-2 rounded-lg border border-teal-600 text-teal-400 hover:bg-teal-600 hover:text-black disabled:opacity-40 disabled:cursor-not-allowed transition"
           >
-            Upload & Process
+            Upload & Extract
           </button>
 
           <span className="text-sm text-gray-400">
-            {selectedFiles.length
-              ? `${selectedFiles.length} file(s) selected`
-              : "No files added"}
+            {selectedFiles.length === 0
+              ? "No files added"
+              : selectedFiles.length === 1
+              ? "1 file selected"
+              : `${selectedFiles.length} files selected`}
           </span>
         </div>
 
@@ -137,9 +130,7 @@ const UploadSection = () => {
             {selectedFiles.map((file, idx) => (
               <div
                 key={idx}
-                className="flex justify-between items-center
-                           bg-black/40 border border-gray-700
-                           rounded-lg px-3 py-2"
+                className="flex justify-between items-center bg-black/40 border border-gray-700 rounded-lg px-3 py-2"
               >
                 <div className="min-w-0">
                   <p className="truncate text-gray-200 text-sm">

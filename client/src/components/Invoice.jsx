@@ -8,12 +8,12 @@ const Invoice = () => {
   const invoices = useSelector((state) => state.invoices.invoices || []);
   const [rows, setRows] = useState([]);
 
-  // sync redux → local
+  
   useEffect(() => {
     setRows(invoices);
   }, [invoices]);
 
-  // auto-save (debounced)
+  
   useEffect(() => {
     const t = setTimeout(() => {
       dispatch(setInvoices(rows));
@@ -43,7 +43,7 @@ const Invoice = () => {
     );
   };
 
-  // 🔥 UPDATED INPUT STYLE (NO CUT VALUES)
+  
   const inputClass = (val) =>
     `min-w-[120px] bg-[#020617] text-white text-sm px-3 py-1 rounded border
      whitespace-nowrap text-right font-mono
@@ -95,12 +95,12 @@ const Invoice = () => {
                   key={`${inv.serialNumber}-${i}`}
                   className="border-b border-gray-800 hover:bg-[#020617]/60 transition"
                 >
-                  {/* INVOICE */}
+                  
                   <td className="px-4 py-2 align-middle whitespace-nowrap">
                     {i === 0 ? inv.serialNumber : ""}
                   </td>
 
-                  {/* CUSTOMER */}
+                  
                   <td className="px-4 py-2 align-middle">
                     {i === 0 && (
                       <input
@@ -118,7 +118,7 @@ const Invoice = () => {
                     )}
                   </td>
 
-                  {/* PRODUCT */}
+                  
                   <td className="px-4 py-2 align-middle">
                     <input
                       className={inputClass(p.name)}
@@ -130,7 +130,7 @@ const Invoice = () => {
                     />
                   </td>
 
-                  {/* QTY */}
+                  
                   <td className="px-4 py-2 align-middle w-20">
                     <input
                       className={inputClass(p.quantity)}
@@ -147,7 +147,7 @@ const Invoice = () => {
                     />
                   </td>
 
-                  {/* TAX % */}
+                  
                   <td className="px-4 py-2 align-middle w-20">
                     <input
                       className={inputClass(p.taxRate)}
@@ -164,7 +164,7 @@ const Invoice = () => {
                     />
                   </td>
 
-                  {/* PRICE WITH TAX */}
+                  
                   <td className="px-4 py-2 align-middle w-32">
                     <input
                       className={inputClass(p.priceWithTax)}
@@ -181,7 +181,7 @@ const Invoice = () => {
                     />
                   </td>
 
-                  {/* SUBTOTAL */}
+                  
                   <td className="px-4 py-2 align-middle w-32">
                     {i === 0 && (
                       <input
@@ -199,7 +199,7 @@ const Invoice = () => {
                     )}
                   </td>
 
-                  {/* TAX TOTAL */}
+                  
                   <td className="px-4 py-2 align-middle w-32">
                     {i === 0 && (
                       <input
@@ -217,7 +217,7 @@ const Invoice = () => {
                     )}
                   </td>
 
-                  {/* GRAND TOTAL */}
+                  
                   <td className="px-4 py-2 align-middle w-36">
                     {i === 0 && (
                       <input
@@ -235,7 +235,7 @@ const Invoice = () => {
                     )}
                   </td>
 
-                  {/* PAYMENT */}
+                  
                   <td className="px-4 py-2 align-middle">
                     {i === 0 && (
                       <input
@@ -253,7 +253,7 @@ const Invoice = () => {
                     )}
                   </td>
 
-                  {/* STATUS */}
+                  
                   <td className="px-4 py-2 align-middle">
                     {i === 0 && (
                       <input
@@ -271,7 +271,7 @@ const Invoice = () => {
                     )}
                   </td>
 
-                  {/* DATE */}
+                  
                   <td className="px-4 py-2 align-middle whitespace-nowrap">
                     {i === 0 && (
                       <span className="px-2 py-1 rounded bg-[#020617] text-gray-300">

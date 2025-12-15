@@ -9,12 +9,12 @@ const Products = () => {
   const [rows, setRows] = useState([]);
   const [check, setCheck] = useState(false);
 
-  // redux → local
+   
   useEffect(() => {
     setRows(invoices);
   }, [invoices]);
 
-  // autosave (debounced)
+  
   useEffect(() => {
     const t = setTimeout(() => {
       dispatch(setInvoices(rows));
@@ -22,7 +22,7 @@ const Products = () => {
     return () => clearTimeout(t);
   }, [rows, dispatch]);
 
-  // missing products check
+  
   useEffect(() => {
     if (!invoices || invoices.length === 0) return;
     const allMissing = invoices.every((inv) => inv.products.length === 0);
@@ -43,7 +43,7 @@ const Products = () => {
     );
   };
 
-  // 🔥 SAME INPUT STYLE AS Invoice.jsx
+  
   const inputClass = (val) =>
     `min-w-[110px] bg-[#020617] text-white text-sm px-3 py-1 rounded border
      whitespace-nowrap text-right font-mono
@@ -93,12 +93,12 @@ const Products = () => {
                   key={`${inv.serialNumber}-${idx}`}
                   className="border-b border-gray-800 hover:bg-[#020617]/60 transition"
                 >
-                  {/* SERIAL */}
+                  
                   <td className="px-4 py-2 whitespace-nowrap">
                     {inv.serialNumber}
                   </td>
 
-                  {/* PRODUCT NAME */}
+                  
                   <td className="px-4 py-2">
                     <input
                       className={inputClass(p.name)}
@@ -115,7 +115,7 @@ const Products = () => {
                     />
                   </td>
 
-                  {/* QTY */}
+                  
                   <td className="px-4 py-2 w-20">
                     <input
                       className={inputClass(p.quantity)}
@@ -132,7 +132,7 @@ const Products = () => {
                     />
                   </td>
 
-                  {/* UNIT PRICE */}
+                  
                   <td className="px-4 py-2 w-28">
                     <input
                       className={inputClass(p.unitPrice)}
@@ -149,7 +149,7 @@ const Products = () => {
                     />
                   </td>
 
-                  {/* UNIT */}
+                  
                   <td className="px-4 py-2 w-24">
                     <input
                       className={inputClass(p.unit)}
@@ -166,7 +166,7 @@ const Products = () => {
                     />
                   </td>
 
-                  {/* DISCOUNT */}
+                  
                   <td className="px-4 py-2 w-24">
                     <input
                       className={inputClass(p.discount)}
@@ -183,7 +183,7 @@ const Products = () => {
                     />
                   </td>
 
-                  {/* TAXABLE VALUE */}
+                  
                   <td className="px-4 py-2 w-32">
                     <input
                       className={inputClass(p.taxableValue)}
@@ -200,7 +200,7 @@ const Products = () => {
                     />
                   </td>
 
-                  {/* TAX % */}
+                  
                   <td className="px-4 py-2 w-20">
                     <input
                       className={inputClass(p.taxRate)}
@@ -217,7 +217,7 @@ const Products = () => {
                     />
                   </td>
 
-                  {/* TAX AMOUNT */}
+                  
                   <td className="px-4 py-2 w-28">
                     <input
                       className={inputClass(p.taxAmount)}
@@ -234,7 +234,7 @@ const Products = () => {
                     />
                   </td>
 
-                  {/* PRICE WITH TAX */}
+                  
                   <td className="px-4 py-2 w-32">
                     <input
                       className={inputClass(p.priceWithTax)}

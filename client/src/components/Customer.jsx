@@ -9,7 +9,7 @@ const Customers = () => {
   const [rows, setRows] = useState([]);
   const initialized = useRef(false);
 
-  // redux → local (ONLY ONCE)
+  
   useEffect(() => {
     if (!initialized.current && invoices.length > 0) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -18,7 +18,7 @@ const Customers = () => {
     }
   }, [invoices]);
 
-  // autosave (debounced)
+  
   useEffect(() => {
     if (!initialized.current) return;
 
@@ -29,7 +29,7 @@ const Customers = () => {
     return () => clearTimeout(t);
   }, [rows, dispatch]);
 
-  // update invoice-level customer fields
+  
   const updateField = (serial, field, value) => {
     setRows((prev) =>
       prev.map((inv) =>
@@ -38,7 +38,7 @@ const Customers = () => {
     );
   };
 
-  // 🔥 SAME INPUT STYLE AS Invoice.jsx
+  
   const inputClass = (val) =>
     `min-w-[120px] bg-[#020617] text-white text-sm px-3 py-1 rounded border
      whitespace-nowrap text-right font-mono
@@ -53,8 +53,7 @@ const Customers = () => {
       <h2 className="text-2xl font-semibold mb-6 text-teal-400">
         Customer Records
       </h2>
-
-      {/* TABLE WRAPPER */}
+      
       <div className="overflow-x-auto rounded-xl border border-gray-700">
         <table className="min-w-max w-full border-collapse text-sm">
           <thead className="bg-[#020617] border-b border-gray-700 sticky top-0 z-10">
@@ -85,12 +84,12 @@ const Customers = () => {
                 key={inv.serialNumber}
                 className="border-b border-gray-800 hover:bg-[#020617]/60 transition"
               >
-                {/* SERIAL */}
+                
                 <td className="px-4 py-2 whitespace-nowrap">
                   {inv.serialNumber}
                 </td>
 
-                {/* CUSTOMER NAME */}
+                
                 <td className="px-4 py-2">
                   <input
                     className={inputClass(inv.customerName)}
@@ -106,7 +105,7 @@ const Customers = () => {
                   />
                 </td>
 
-                {/* PHONE */}
+                
                 <td className="px-4 py-2 w-36">
                   <input
                     className={inputClass(inv.customerPhone)}
@@ -122,7 +121,7 @@ const Customers = () => {
                   />
                 </td>
 
-                {/* COMPANY */}
+                
                 <td className="px-4 py-2">
                   <input
                     className={inputClass(inv.customerCompanyName)}
@@ -138,7 +137,7 @@ const Customers = () => {
                   />
                 </td>
 
-                {/* GSTIN */}
+                
                 <td className="px-4 py-2">
                   <input
                     className={inputClass(inv.gstin)}
@@ -150,7 +149,7 @@ const Customers = () => {
                   />
                 </td>
 
-                {/* TOTAL */}
+                
                 <td className="px-4 py-2 w-32">
                   <input
                     className={inputClass(inv.totalAmount)}
@@ -166,7 +165,7 @@ const Customers = () => {
                   />
                 </td>
 
-                {/* PENDING */}
+                
                 <td className="px-4 py-2 w-32">
                   <input
                     className={inputClass(inv.amountPending)}
@@ -182,7 +181,7 @@ const Customers = () => {
                   />
                 </td>
 
-                {/* STATUS */}
+                
                 <td className="px-4 py-2">
                   <input
                     className={inputClass(inv.status)}

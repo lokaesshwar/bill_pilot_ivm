@@ -21,8 +21,6 @@ const Workspace = () => {
   return (
     <div className="min-h-screen bg-[#0f1115] text-gray-200">
       <div className="max-w-7xl mx-auto px-6 py-8">
-
-        {/* Header */}
         <header className="mb-8">
           <h1 className="text-3xl font-semibold text-white">
             Workspace
@@ -31,16 +29,13 @@ const Workspace = () => {
             Automated Data Extraction and Invoice Management
           </p>
         </header>
-
-        {/* Upload */}
+        
         <div className="mb-8 rounded-xl border border-gray-800 bg-[#141821] p-6">
           <UploadSection />
         </div>
-
-        {/* Layout */}
+        
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-
-          {/* Sidebar */}
+          
           <aside className="rounded-xl border border-gray-800 bg-[#141821] p-4 h-fit">
             <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
               Data Views
@@ -68,8 +63,7 @@ const Workspace = () => {
               })}
             </div>
           </aside>
-
-          {/* Content */}
+          
           <main className="md:col-span-3 rounded-xl border border-gray-800 bg-[#141821] p-6 min-h-[420px]">
             {invoices?.length === 0 ? (
               <div className="flex items-center justify-center h-full text-sm text-gray-500">
