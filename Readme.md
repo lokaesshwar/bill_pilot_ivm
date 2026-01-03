@@ -124,5 +124,4 @@ Configure environment variables locally and in deployment dashboards.
 
 ---
 
-## 🧑‍💻 Project Overview
-This project was built end-to-end to explore AI-driven document processing, real-time state synchronization, and scalable full-stack architecture. It demonstrates practical usage of LLMs in real-world business workflows.
+
