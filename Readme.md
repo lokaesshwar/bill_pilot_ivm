@@ -1,4 +1,4 @@
-# Automated Data Extraction & Invoice Management System
+# BILL PILOT AI - Automated Data Extraction & Invoice Management System
 
 A full-stack web application I built to automatically extract, structure, and manage invoice data from PDFs, images, and Excel files using Google Gemini AI.
 
