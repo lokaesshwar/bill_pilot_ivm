@@ -23,8 +23,9 @@ const SparkStudio = ({ invoices }) => {
     if (!invoices) return [];
     const products = [];
     invoices.forEach(inv => {
-      if (inv.products && Array.isArray(inv.products)) {
+      if (inv && inv.products && Array.isArray(inv.products)) {
         inv.products.forEach(p => {
+          if (!p) return;
           products.push({
             invoiceSerial: inv.serialNumber,
             customerName: inv.customerName,
@@ -67,6 +68,7 @@ const SparkStudio = ({ invoices }) => {
     const auditLogs = [];
 
     invoices.forEach((inv, index) => {
+      if (!inv) return;
       const amt = Number(inv.totalAmount) || 0;
       total += amt;
 
@@ -116,6 +118,7 @@ const SparkStudio = ({ invoices }) => {
       // Check products tax rate exceeding typical bounds
       if (inv.products && Array.isArray(inv.products)) {
         inv.products.forEach((p, idx) => {
+          if (!p) return;
           const r = Number(p.taxRate) || 0;
           if (r > 18) {
             auditLogs.push({

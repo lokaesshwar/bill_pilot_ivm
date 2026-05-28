@@ -174,7 +174,7 @@ class GroupedDataFrame {
 
 export const SparkSession = {
   builder: {
-    appName: (name) => SparkSession,
+    appName: (name) => SparkSession.builder,
     getOrCreate: () => SparkSession
   },
   read: {
