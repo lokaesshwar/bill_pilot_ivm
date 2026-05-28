@@ -5,15 +5,17 @@ import Invoices from "../components/Invoice.jsx";
 import Products from "../components/Products.jsx";
 import Customers from "../components/Customer.jsx";
 import UploadSection from "../components/UploadSection.jsx";
+import PipelineStudio from "../components/PipelineStudio.jsx";
 
 const Workspace = () => {
   const [activeView, setActiveView] = useState("invoices");
-  const invoices = useSelector((state) => state.invoices);
+  const invoicesArray = useSelector((state) => state.invoices.invoices || []);
 
   const views = {
     invoices: { label: "Invoices", component: Invoices },
     products: { label: "Products", component: Products },
     customers: { label: "Customers", component: Customers },
+    pipeline: { label: "Data Pipeline (Kafka & Spark)", component: PipelineStudio },
   };
 
   const ActiveComponent = views[activeView].component;
@@ -65,7 +67,7 @@ const Workspace = () => {
           </aside>
           
           <main className="md:col-span-3 rounded-xl border border-gray-800 bg-[#141821] p-6 min-h-[420px]">
-            {invoices?.length === 0 ? (
+            {activeView !== "pipeline" && invoicesArray.length === 0 ? (
               <div className="flex items-center justify-center h-full text-sm text-gray-500">
                 Upload documents to view extracted data
               </div>
